@@ -19,82 +19,82 @@ const App = () => {
   ]);
 
   
-  // const [editStatus, editStatusChange] = useState(false);
+  const [editStatus, editStatusChange] = useState(false);
 
-  // const [editItemDetail, editItemDetailChange] = useState({
-  //   id: null,
-  //   text: null,
-  // });
+  const [editItemDetail, editItemDetailChange] = useState({
+    id: null,
+    text: null,
+  });
 
-  // const [checkedItems, checkedItemChange] = useState([]);
+  const [checkedItems, checkedItemChange] = useState([]);
 
-  // const deleteItem = id => {
-  //   setItems(prevItems => {
-  //     return prevItems.filter(item => item.id !== id);
-  //   });
-  // };
+  const deleteItem = id => {
+    setItems(prevItems => {
+      return prevItems.filter(item => item.id !== id);
+    });
+  };
 
-  // const saveEditItem = (id, text) => {
-  //   setItems(prevItems => {
-  //     return prevItems.map(item =>
-  //       item.id === editItemDetail.id ? {id, text: editItemDetail.text} : item,
-  //     );
-  //   });
+  const saveEditItem = (id, text) => {
+    setItems(prevItems => {
+      return prevItems.map(item =>
+        item.id === editItemDetail.id ? {id, text: editItemDetail.text} : item,
+      );
+    });
 
-  //   editStatusChange(!editStatus);
-  // };
+    editStatusChange(!editStatus);
+  };
 
-  // const handleEditChange = text => {
-  //   editItemDetailChange({id: editItemDetail.id, text});
-  // };
+  const handleEditChange = text => {
+    editItemDetailChange({id: editItemDetail.id, text});
+  };
 
-  // const addItem = text => {
-  //   if (!text) {
-  //     Alert.alert(
-  //       'No item entered',
-  //       'Please enter an item when adding to your shopping list',
-  //       [
-  //         {
-  //           text: 'Understood',
-  //           style: 'cancel',
-  //         },
-  //       ],
-  //       {cancelable: true},
-  //     );
-  //   } else {
-  //     setItems(prevItems => {
-  //       return [{id: uuid(), text}, ...prevItems];
-  //     });
-  //   }
-  // };
+  const addItem = text => {
+    if (!text) {
+      Alert.alert(
+        'No item entered',
+        'Please enter an item when adding to your shopping list',
+        [
+          {
+            text: 'Understood',
+            style: 'cancel',
+          },
+        ],
+        {cancelable: true},
+      );
+    } else {
+      setItems(prevItems => {
+        return [{id: uuid(), text}, ...prevItems];
+      });
+    }
+  };
 
 
-  // const editItem = (id, text) => {
-  //   editItemDetailChange({
-  //     id,
-  //     text,
-  //   });
-  //   return editStatusChange(!editStatus);
-  // };
+  const editItem = (id, text) => {
+    editItemDetailChange({
+      id,
+      text,
+    });
+    return editStatusChange(!editStatus);
+  };
 
-  // const itemChecked = (id, text) => {
-  //   const isChecked = checkedItems.filter(checkedItem => checkedItem.id === id);
-  //   isChecked.length
+  const itemChecked = (id, text) => {
+    const isChecked = checkedItems.filter(checkedItem => checkedItem.id === id);
+    isChecked.length
 
-  //   checkedItemChange(prevItems => {
-  //         return [...prevItems.filter(item => item.id !== id)];
-  //       })
-
-  //       checkedItemChange(prevItems => {
-  //         return [...prevItems.filter(item => item.id !== id), {id, text}];
-  //       });
-  // };
+    checkedItemChange(prevItems => {
+          return [...prevItems.filter(item => item.id !== id)];
+        })
+        
+        checkedItemChange(prevItems => {
+          return [...prevItems.filter(item => item.id !== id), {id, text}];
+        });
+  };
 
   return (
     <View style={styles.container}>
       <Header title="Shopping List" />
-      {/* <AddItem addItem={addItem} /> */}
-      {/* <FlatList
+      <AddItem addItem={addItem} />
+      <FlatList
         data={items}
         renderItem={({item}) => (
           <ListItem
@@ -109,7 +109,7 @@ const App = () => {
             checkedItems={checkedItems}
           />
         )}
-      /> */}
+      />
     </View>
   );
 };
